@@ -1,0 +1,48 @@
+<%- include ../partials/header.ejs %>
+
+<%- include ../partials/main_nav.ejs %>
+  
+
+  <!-- Main Content -->
+  <main class="container">
+    <div class="row">
+        <div class="offset-md-1 col-md-11">
+                 <form class="form" method="post">
+            <input type="hidden" class="form-control" id="NameTextField"
+                    placeholder="Survey Topic" name="surveyTopic" value="<%= title %>" required>
+            <input type="hidden" class="form-control" id="NameTextField"
+                    placeholder="Questions" name="numberofQuestions" value="<%= surveyList.questions.length %>" required>
+            <input type="hidden" class="form-control" id="NameTextField"
+                placeholder="Question Type" name="type" value="<%= type %>" required>
+            
+            <% for (let count = 0; count < surveyList.questions.length; count++) { %>
+            <fieldset class="form-group">
+            <input type="hidden" class="form-control" id="NameTextField"
+                placeholder="Question Topic" name="questionTopic<%=count%>"  
+                value="<%= surveyList.questions[count].questionTopic %>" required>
+            <legend><%= surveyList.questions[count].questionTopic %></legend>  
+                     <div class="form-group">
+                      <label for="Textarea">Your Answer</label>
+                      <textarea class="form-control" id="Textarea" rows="3" name = "question<%=count%>" required></textarea>
+                      </div>
+          
+            <% } %>
+            <fieldset class="form-group text-right">
+            <button type="submit" class="btn btn-success"><i class="fa fa-check-square-o"></i> Submit</button>
+            <a href="/survey" class="btn btn-warning"><i class="fa fa-undo"></i> Cancel</a>
+            </fieldset>
+        
+         </form>
+        </div>
+    </div>
+  </main>
+  
+<%- include ../partials/bottom_nav.ejs %>  
+
+<%- include ../partials/footer.ejs %>
+  
+
+
+
+
+

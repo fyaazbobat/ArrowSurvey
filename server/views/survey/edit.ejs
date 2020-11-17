@@ -1,0 +1,51 @@
+<%- include ../partials/header.ejs %>
+
+<%- include ../partials/main_nav.ejs %>
+   <input type="hidden" class="form-control" id="questionNumTextField"
+                    placeholder="Questions" name="numberofQuestions" value="<%= survey.questions.length %>" required>
+
+  <!-- Main Content -->
+  <main class="container">
+    <div class="row">
+        <div class="offset-md-1 col-md-11">
+          <form class="form" method="post">
+            <div class="form-group">
+                    <label for="topicTextField">Survey Topic</label>
+                    <input type="text" class="form-control"
+                    id="topicTextField"
+                    placeholder="Enter topic"
+                    name="topic" 
+                    value="<%= survey.topic %>"
+                    required>
+                </div>
+
+            <% for (let i = 0; i < survey.questions.length; i++) { %>
+                     <div class="form-group">
+                      <label for="questionTextField">Survey Questions<%=i +1%></label>
+                      <input type="text" class="form-control"
+                      id="questionTextField"
+                      placeholder="Enter question"
+                      name="questionTopic<%=i%> " 
+                      value="<%= survey.questions[i].questionTopic%>"
+                      required>
+                  </div>      
+            <% } %>
+            <fieldset class="form-group text-right">
+            <button type="submit" class="btn btn-success"><i class="fa fa-check-square-o"></i> Submit</button>
+            <a href="/survey" class="btn btn-warning"><i class="fa fa-undo"></i> Cancel</a>
+            </fieldset>
+        
+         </form>
+        </div>
+    </div>
+  </main>
+  
+<%- include ../partials/bottom_nav.ejs %>  
+
+<%- include ../partials/footer.ejs %>
+  
+
+
+
+
+

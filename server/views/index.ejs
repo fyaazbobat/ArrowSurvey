@@ -1,0 +1,26 @@
+<%- include partials/header.ejs %>
+
+<%- include partials/main_nav.ejs %>
+  
+
+  <!-- Main Content -->
+  <main class="container">
+    <div class="jumbotron">
+      <h1 class="display-3">Welcome to <br> <%= title %></h1>
+         <% if (title == "ArrowSurveys") { %>
+         <div class="btnContatiner">
+          <a href="/survey/createSurvey" class="btn btn-primary" role="button">Create Surveys</a>
+          <a href="/book-list" class="btn btn-primary" role="button">Go to Surveys</a>
+      </div>
+        <% } %>  
+    </div>
+  </main>
+  
+<%- include partials/bottom_nav.ejs %>  
+
+<%- include partials/footer.ejs %>
+  
+
+
+
+
