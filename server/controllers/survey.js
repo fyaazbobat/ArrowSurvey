@@ -52,9 +52,9 @@ module.exports.DisplayCreateQuestion = (req, res) => {
     let query = require('url').parse(req.url, true).query;
     //let numberOfQuestion = req.params.numberOfQuestion; why?
 
-    let topic = req.params.topic;
+    let topic = query.topic;
     let numberOfQuestion = query.numberOfQuestion;
-    let type = req.params.type;
+    let type = query.type;
 
     res.render('survey/createQuestion', {
         title: "Create Survey",
@@ -113,6 +113,7 @@ module.exports.DisplayAnswer = (req, res) => {
         // find one survey by its id
         Survey.findById(id, (err, surveyList) => {
                 // show the survey page
+                
                 res.render('survey/answer', {
                     title: surveyList.topic,
                     type: surveyList.questions[0].type,
@@ -143,6 +144,7 @@ module.exports.answerSurvey = (req, res) => {
         "surveyID":id,
         "surveyTopic": req.body.surveyTopic,
         "questions": questionArray,
+        "type": surveyList.questions[0].type
     });
             if (err) {
                 console.log(err);
@@ -172,9 +174,11 @@ module.exports.deleteSurvey = (req, res, next) => {
 
 //Display edit
     module.exports.displayEditPage = (req, res, next) => {
-    let id = req.params.id;
 
-    Survey.findById(id, (err, surveyToedit) => {
+    let id = mongoose.Types.ObjectId(req.params.id);
+
+
+    Survey.findById(id, (err, surveyList) => {
         if(err)
         {
             console.log(err);
@@ -183,9 +187,8 @@ module.exports.deleteSurvey = (req, res, next) => {
         else
         {
             //show the edit view
-            res.render('survey/edit', {
-                title: 'Edit Survey',
-                survey: surveyToedit, 
+            res.render('survey/edit', {title: 'Edit survey',
+                surveyList: surveyList
             })
 
         }
@@ -193,11 +196,12 @@ module.exports.deleteSurvey = (req, res, next) => {
 }
 //process edit
 module.exports.processEditPage = (req, res, next) => {
-    let id = req.params.id
+    let id = mongoose.Types.ObjectId(req.params.id);
     //create question objects
-    let numberOfQuestion = req.body.numberOfQuestion;
+    let numberofQuestions = req.body.numberofQuestions;
     let questionArray = [];
-
+    let type = req.body.type;
+    
     for (var i = 0; i < numberofQuestions; ++i) {
 
         let question = {
@@ -205,21 +209,24 @@ module.exports.processEditPage = (req, res, next) => {
         }
         questionArray.push(question);
     }
-    let updatedSurvey = Survey({
+
+    let surveyList = Survey({
         "_id": id,
         "topic": req.body.topic,
-        "questions" :questionArray 
+        "questions" :questionArray,
+        "type": type
     });
 
-    Survey.updateOne({_id: id}, updatedSurvey, (err) => {
+    Survey.updateOne({_id: id}, surveyList, (err) => {
         if(err)
         {
+
             console.log(err);
             res.end(err);
         }
         else
         {
-            // refresh the book list
+
             res.redirect('/survey');
         }
     });

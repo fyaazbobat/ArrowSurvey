@@ -1,32 +1,40 @@
 <%- include ../partials/header.ejs %>
 
 <%- include ../partials/main_nav.ejs %>
-   <input type="hidden" class="form-control" id="questionNumTextField"
-                    placeholder="Questions" name="numberofQuestions" value="<%= survey.questions.length %>" required>
-
+<input type="hidden" class="form-control" id="NameTextField"
+                    placeholder="Questions" name="numberofQuestions" value="<%= surveyList.questions.length %>" required>
   <!-- Main Content -->
   <main class="container">
     <div class="row">
         <div class="offset-md-1 col-md-11">
-          <form class="form" method="post">
+          <form class="form" method="POST">
             <div class="form-group">
                     <label for="topicTextField">Survey Topic</label>
                     <input type="text" class="form-control"
                     id="topicTextField"
                     placeholder="Enter topic"
                     name="topic" 
-                    value="<%= survey.topic %>"
+                    value="<%= surveyList.topic %>"
+                    required>
+                </div>
+                    <div class="form-group">
+                    <label for="topicTextField">TYPE:<%=surveyList.type %>,NUMBER OF QUESTIONS: <%=surveyList.type %></label>
+                    <input type="hidden" class="form-control"
+                    id="topicTextField"
+                    placeholder=""
+                    name="type" 
+                    value="<%=surveyList.type %>"
                     required>
                 </div>
 
-            <% for (let i = 0; i < survey.questions.length; i++) { %>
+            <% for (let i = 0; i < surveyList.questions.length; i++) { %>
                      <div class="form-group">
                       <label for="questionTextField">Survey Questions<%=i +1%></label>
                       <input type="text" class="form-control"
                       id="questionTextField"
                       placeholder="Enter question"
                       name="questionTopic<%=i%> " 
-                      value="<%= survey.questions[i].questionTopic%>"
+                      value="<%= surveyList.questions[i].questionTopic%>"
                       required>
                   </div>      
             <% } %>
