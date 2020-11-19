@@ -1,8 +1,7 @@
 <%- include ../partials/header.ejs %>
 
 <%- include ../partials/main_nav.ejs %>
-<input type="hidden" class="form-control" id="NameTextField"
-                    placeholder="Questions" name="numberofQuestions" value="<%= surveyList.questions.length %>" required>
+
   <!-- Main Content -->
   <main class="container">
     <div class="row">
@@ -17,8 +16,30 @@
                     value="<%= surveyList.topic %>"
                     required>
                 </div>
-                    <div class="form-group">
-                    <label for="topicTextField">TYPE:<%=surveyList.type %>,NUMBER OF QUESTIONS: <%=surveyList.type %></label>
+                  <% for (let i = 0; i < surveyList.questions.length; i++) { %>
+                     <div class="form-group">
+                      <label for="questionTextField">Survey Questions<%=i +1%></label>
+                      <input type="text" class="form-control"
+                      id="questionTextField"
+                      placeholder="Enter question"
+                      name="questionTopic<%=i%>" 
+                      value="<%= surveyList.questions[i].questionTopic %>"
+                      required>
+                  </div>      
+            <% } %>
+
+     <div class="form-group">
+                    <label for="topicTextField"><%= surveyList.questions[0].questionTopic%></label>
+                    <input type="hidden" class="form-control"
+                    id="topicTextField"
+                    placeholder=""
+                    name="numberofQuestions" 
+                    value="<%=surveyList.questions.length%>"
+                    required>
+                </div>
+            
+                <div class="form-group">
+                    <label for="topicTextField">TYPE:<%=surveyList.type %>,NUMBER OF QUESTIONS: <%=surveyList.questions.length %></label>
                     <input type="hidden" class="form-control"
                     id="topicTextField"
                     placeholder=""
@@ -27,17 +48,8 @@
                     required>
                 </div>
 
-            <% for (let i = 0; i < surveyList.questions.length; i++) { %>
-                     <div class="form-group">
-                      <label for="questionTextField">Survey Questions<%=i +1%></label>
-                      <input type="text" class="form-control"
-                      id="questionTextField"
-                      placeholder="Enter question"
-                      name="questionTopic<%=i%> " 
-                      value="<%= surveyList.questions[i].questionTopic%>"
-                      required>
-                  </div>      
-            <% } %>
+
+
             <fieldset class="form-group text-right">
             <button type="submit" class="btn btn-success"><i class="fa fa-check-square-o"></i> Submit</button>
             <a href="/survey" class="btn btn-warning"><i class="fa fa-undo"></i> Cancel</a>

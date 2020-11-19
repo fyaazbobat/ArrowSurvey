@@ -77,7 +77,7 @@ module.exports.CreateSurvey = (req, res) => {
         for (var i = 1; i <= numberOfQuestion; ++i) {
            
                    let question = {
-                     "questionTopic": req.body['questionTopic' + i],
+                     "questionTopic": req.body['questionTopic'+ i],
                      "type": req.body.type
                  }
                   questionArray.push(question);
@@ -189,8 +189,8 @@ module.exports.deleteSurvey = (req, res, next) => {
             //show the edit view
             res.render('survey/edit', {title: 'Edit survey',
                 surveyList: surveyList
-            })
-
+            });
+            console.log(surveyList.questions);
         }
     });
 }
@@ -205,7 +205,8 @@ module.exports.processEditPage = (req, res, next) => {
     for (var i = 0; i < numberofQuestions; ++i) {
 
         let question = {
-            "questionTopic": req.body['questionTopic' + i]
+            "questionTopic": req.body['questionTopic' + i],
+            "type": type
         }
         questionArray.push(question);
     }
@@ -220,14 +221,13 @@ module.exports.processEditPage = (req, res, next) => {
     Survey.updateOne({_id: id}, surveyList, (err) => {
         if(err)
         {
-
+            
             console.log(err);
             res.end(err);
         }
         else
         {
-
-            res.redirect('/survey');
+         res.redirect('/survey');
         }
     });
 }
