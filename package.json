@@ -46,12 +46,8 @@
   "main": "server.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tsiliopoulos/COMP229-F2020-Lesson6.git"
+    "url": "https://github.com/ykw0628/ArrowSurvey"
   },
-  "author": "Tom Tsiliopoulos",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/tsiliopoulos/COMP229-F2020-Lesson6/issues"
-  },
-  "homepage": "https://github.com/tsiliopoulos/COMP229-F2020-Lesson6#readme"
+  "author": "Kunwoo Yoon",
+  "license": "ISC"
 }

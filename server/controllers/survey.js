@@ -21,16 +21,19 @@ module.exports.displaySurvey = (req, res, next) => {
 
             res.render('survey/list', 
             {title: 'Surveys', 
-            surveyList: surveyList, 
+            surveyList: surveyList,
+            displayName: req.user ? req.user.displayName : ''
             });      
         }
     });
 }
-//Display the create curvey page for creating a survey
+//Display the create survey page for creating a survey
 module.exports.DisplayCreateSurveyPage = (req, res) => {
     res.render('survey/createSurvey', {
         title: "Create Survey",
-        surveys: ''
+        surveys: '',
+        displayName: req.user.displayName,
+        userid: req.user._id
     });
 }
 
@@ -60,6 +63,7 @@ module.exports.DisplayCreateQuestion = (req, res) => {
         title: "Create Survey",
         surveys: '',
         numberOfQuestion: parseInt(numberOfQuestion),
+        userid: req.user._id,
         topic: topic,
         type: type
     });
@@ -76,19 +80,48 @@ module.exports.CreateSurvey = (req, res) => {
         //create questions accorder to the numberOfQuestion
         for (var i = 1; i <= numberOfQuestion; ++i) {
            
+            if(type == 1){
+                let question = {
+                  "questionTopic": req.body['questionTopic' + i],
+                  "type": req.body.type
+              }
+               questionArray.push(question);
+             }    
+            else if(type == 2){
+                if(req.body['questionAns' + i + '3'] != ""){
                    let question = {
-                     "questionTopic": req.body['questionTopic'+ i],
+                     "questionTopic": req.body['questionTopic' + i],
+                     "questionAns":
+                     [
+                         { "answer": req.body['questionAns' + i + '1'] },
+                         { "answer": req.body['questionAns' + i + '2'] },
+                         { "answer": req.body['questionAns' + i + '3'] }
+                     ],
                      "type": req.body.type
                  }
                   questionArray.push(question);
-            }    
-         
-
+                }
+                else{
+                    let question = {
+                     "questionTopic": req.body['questionTopic' + i],
+                     "questionAns":
+                     [
+                         { "answer": req.body['questionAns' + i + '1'] },
+                         { "answer": req.body['questionAns' + i + '2'] }       
+                     ],
+                     "type": req.body.type
+                 }
+                  questionArray.push(question);
+                }
+                 
+            }
+         }
 
         // get a reference to the id from the url
         //let id = mongoose.Types.ObjectId.createFromHexString(req.params.id);
         let newSurvey = Survey({
             "topic": req.body.topic,
+            "user": req.user._id,
             "type":type,
             "questions": questionArray
 
@@ -116,8 +149,11 @@ module.exports.DisplayAnswer = (req, res) => {
                 
                 res.render('survey/answer', {
                     title: surveyList.topic,
+                    user: surveyList.user,
                     type: surveyList.questions[0].type,
                     surveyList: surveyList,
+                    displayName: req.user ? req.user.displayName : '',
+
                 });
             
         });
@@ -196,8 +232,8 @@ module.exports.deleteSurvey = (req, res, next) => {
 }
 //process edit
 module.exports.processEditPage = (req, res, next) => {
+
     let id = mongoose.Types.ObjectId(req.params.id);
-    //create question objects
     let numberofQuestions = req.body.numberofQuestions;
     let questionArray = [];
     let type = req.body.type;
@@ -228,6 +264,23 @@ module.exports.processEditPage = (req, res, next) => {
         else
         {
          res.redirect('/survey');
+        }
+    });
+}
+// Display user surveys list
+module.exports.displayUserSurvey = (req, res) => {
+    let userId = req.user._id;
+     //only show the surveys created by the user
+     Survey.find({ user: userId }, (err, surveyList) => {
+        if (err) {
+            return console.error(err);
+        }
+        else {
+            res.render('survey/userSurvey', {
+                title: 'My Surveys',
+                surveyList: surveyList,
+                displayName: req.user.displayName,
+            });
         }
     });
 }

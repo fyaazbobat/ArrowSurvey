@@ -15,22 +15,42 @@
             <input type="hidden" class="form-control" id="NameTextField"
                 placeholder="Question Type" name="type" value="<%= type %>" required>
             
-            <% for (let count = 0; count < surveyList.questions.length; count++) { %>
+        <% for (let count = 0; count < surveyList.questions.length; count++) { %>
             <fieldset class="form-group">
             <input type="hidden" class="form-control" id="NameTextField"
                 placeholder="Question Topic" name="questionTopic<%=count%>"  
                 value="<%= surveyList.questions[count].questionTopic %>" required>
-            <legend><%= surveyList.questions[count].questionTopic %></legend>  
-                     <div class="form-group">
-                      <label for="Textarea">Your Answer</label>
-                      <textarea class="form-control" id="Textarea" rows="3" name = "question<%=count%>" required></textarea>
-                      </div>
-          
-            <% } %>
+            <legend><%= surveyList.questions[count].questionTopic %></legend> 
+             <% if (type== 1) {%>   
+                      <div class="form-group">
+                        <label for="Textarea">Your Answer</label>
+                        <textarea class="form-control" id="Textarea" rows="3" name = "question<%=count%>" required></textarea>
+                      </div> 
+
+                 <% } else if(type == 2) { %>
+                <% for (let i = 0; i<surveyList.questions[count].questionAns.length; i++) { %>   
+                     <div class="form-check">
+                     <label class="form-check-label">
+                          <% if (surveyList.questions[count].questionAns[i].answer != "") { %>
+                            <input type="radio" class="form-check-input" name="question<%=count%>" value="<%= surveyList.questions[count].questionAns[i].answer %>" required>
+                            <%= surveyList.questions[count].questionAns[i].answer %>
+                           <% } else { %>
+                           <input type="hidden" class="form-check-input" name="question<%=count%>" value="<%= surveyList.questions[count].questionAns[i].answer %>">
+                            <%= surveyList.questions[count].questionAns[i].answer %>
+                          <% }  %>
+                     </label>
+                     </div>
+                     <br>     
+                    <% } %> 
+               <% } %>
+                  </fieldset>
+             <% } %> 
+
             <fieldset class="form-group text-right">
             <button type="submit" class="btn btn-success"><i class="fa fa-check-square-o"></i> Submit</button>
             <a href="/survey" class="btn btn-warning"><i class="fa fa-undo"></i> Cancel</a>
             </fieldset>
+
         
          </form>
         </div>

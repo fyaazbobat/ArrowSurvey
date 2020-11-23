@@ -161,3 +161,12 @@ module.exports.performLogout = (req, res, next) => {
     req.logout();
     res.redirect('/');
 }
+
+  // create a function to check if the user is authenticated
+  module.exports.RequireAuth = (req, res, next) => {
+    // check if the user is logged in
+    if(!req.isAuthenticated()) {
+      return res.redirect('/login');
+    }
+    next();
+  }
