@@ -12,23 +12,23 @@ let userModel = require('../models/user');
 let User = userModel.User; // alias
 
 module.exports.displayHomePage = (req, res, next) => {
-    res.render('index', {title: 'ArrowSurveys'});
+    res.render('index', {title: 'ArrowSurveys', displayName: req.user ? req.user.displayName : ''});
 }
 
 module.exports.displayAboutPage = (req, res, next) => {
-    res.render('index', { title: 'About'});
+    res.render('index', { title: 'About', displayName: req.user ? req.user.displayName : ''});
 }
 
 module.exports.displayProductsPage = (req, res, next) => {
-    res.render('index', { title: 'Products'});
+    res.render('index', { title: 'Products', displayName: req.user ? req.user.displayName : ''});
 }
 
 module.exports.displayServicesPage = (req, res, next) => {
-    res.render('index', { title: 'Services'});
+    res.render('index', { title: 'Services', displayName: req.user ? req.user.displayName : ''});
 }
 
 module.exports.displayContactPage = (req, res, next) => {
-    res.render('index', { title: 'Contact'});
+    res.render('index', { title: 'Contact', displayName: req.user ? req.user.displayName : ''});
 }
 
 module.exports.displayLoginPage = (req, res, next) => {
@@ -44,10 +44,10 @@ module.exports.displayLoginPage = (req, res, next) => {
     }
     else
     {
-        return res.redirect('/');
+        return res.redirect('/ArrowSurveys');
     }
 }
-/*
+
 module.exports.processLoginPage = (req, res, next) => {
     passport.authenticate('local',
     (err, user, info) => {
@@ -62,7 +62,7 @@ module.exports.processLoginPage = (req, res, next) => {
             req.flash('loginMessage', 'Authentication Error');
             return res.redirect('/login');
         }
-        req.login(user, (err) => {
+        req.logIn(user, (err) => {
             // server error?
             if(err)
             {
@@ -88,9 +88,9 @@ module.exports.processLoginPage = (req, res, next) => {
                 username: user.username,
                 email: user.email
             }, token: authToken});
+            */
 
-
-            return res.redirect('/book-list');
+            return res.redirect('/ArrowSurveys');
         });
     })(req, res, next);
 }
@@ -146,12 +146,12 @@ module.exports.processRegisterPage = (req, res, next) => {
 
             // redirect the user and authenticate them
 
-            /* TODO - Getting Ready to convert to API
+            /*TODO - Getting Ready to convert to API
             res.json({success: true, msg: 'User Registered Successfully!'});
-
+            */
 
             return passport.authenticate('local')(req, res, () => {
-                res.redirect('/book-list')
+                res.redirect('/survey')
             });
         }
     });
@@ -161,4 +161,3 @@ module.exports.performLogout = (req, res, next) => {
     req.logout();
     res.redirect('/');
 }
-*/

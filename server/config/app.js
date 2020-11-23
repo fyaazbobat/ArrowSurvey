@@ -94,7 +94,7 @@ passport.use(strategy);
 
 // routing
 app.use('/', indexRouter);
-//app.use('/users', usersRouter);
+app.use('/users', usersRouter);
 app.use('/book-list', booksRouter);
 app.use('/survey',surveyRouter);
 
