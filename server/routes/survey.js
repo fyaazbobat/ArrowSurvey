@@ -42,6 +42,6 @@ router.post('/edit/:id', surveyController.processEditPage);
 router.get('/delete/:id', surveyController.deleteSurvey);
 
 /* GET Route for displaying the createSurvey page */
-router.get('/mySurvey',  indexController.RequireAuth, surveyController.displayUserSurvey);
+router.get('/mySurvey/',  indexController.RequireAuth, surveyController.displayUserSurvey);
 
 module.exports = router;
