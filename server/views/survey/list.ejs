@@ -11,9 +11,8 @@
           <table class="table table-bordered table-striped table-hover">
             <tr>
               <th class="text-center">Survey Topic</th>
-              <th class="text-center"></th>
-              <th class="text-center"></th>
-              <th class="text-center"></th>
+              <th class="text-center">Choose a Survey</th>
+
             </tr>
             <!-- Template Row -->
             <% for (let i = 0; i < surveyList.length; i++) { %>
@@ -24,13 +23,7 @@
               Go to this survey
                </a>
                </td>
-               <td class="text-center">
-                <a href="/survey/edit/<%= surveyList[i]._id %>" class="btn btn-primary btn-sm">
-                <i class="fas fa-pencil-alt"></i> Edit</a>
-              </td>
-              <td class="text-center">
-                <a href="/survey/delete/<%= surveyList[i]._id %>" class="btn btn-danger btn-sm">
-                <i class="fas fa-trash-alt"></i> Delete</a>
+
               </td>
             </tr>
             <% } %>

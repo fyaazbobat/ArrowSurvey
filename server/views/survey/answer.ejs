@@ -1,6 +1,10 @@
 <%- include ../partials/header.ejs %>
 
 <%- include ../partials/main_nav.ejs %>
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+<link href="/public/Content/app.css">
   
 
   <!-- Main Content -->
@@ -16,7 +20,13 @@
                 placeholder="Question Type" name="type" value="<%= type %>" required>
             
         <% for (let count = 0; count < surveyList.questions.length; count++) { %>
-            <fieldset class="form-group">
+           
+          <div class="card" style="width: 20rem;">
+            <img class="card-img-top" src="../../Assets/images/undraw_my_answer_iw6k.svg" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Select the Your Answer</h5>
+              <hr>
+          <fieldset class="form-group">
             <input type="hidden" class="form-control" id="NameTextField"
                 placeholder="Question Topic" name="questionTopic<%=count%>"  
                 value="<%= surveyList.questions[count].questionTopic %>" required>
@@ -30,7 +40,9 @@
                  <% } else if(type == 2) { %>
                 <% for (let i = 0; i<surveyList.questions[count].questionAns.length; i++) { %>   
                      <div class="form-check">
-                     <label class="form-check-label">
+                       <ul>
+                         <li> 
+                          <label class="form-check-label">
                           <% if (surveyList.questions[count].questionAns[i].answer != "") { %>
                             <input type="radio" class="form-check-input" name="question<%=count%>" value="<%= surveyList.questions[count].questionAns[i].answer %>" required>
                             <%= surveyList.questions[count].questionAns[i].answer %>
@@ -39,11 +51,16 @@
                             <%= surveyList.questions[count].questionAns[i].answer %>
                           <% }  %>
                      </label>
+                         </li></ul>
                      </div>
                      <br>     
                     <% } %> 
                <% } %>
                   </fieldset>
+            
+                </div>
+              </div>
+              
              <% } %> 
 
             <fieldset class="form-group text-right">
@@ -55,6 +72,7 @@
          </form>
         </div>
     </div>
+    
   </main>
   
 <%- include ../partials/bottom_nav.ejs %>  

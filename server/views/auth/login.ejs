@@ -1,6 +1,12 @@
 <%- include ../partials/header.ejs %>
 
 <%- include ../partials/main_nav.ejs %>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+
+
+
+<link rel='stylesheet' href='/Content/login.css' />
 
 <main class="container">
     <!-- Message Area -->
@@ -11,38 +17,64 @@
     <% } %>
 
     <div class="row">
-        <div class="col-md-offset-3 col-md-5">
-            <h1>Please Login</h1>
+        <div class="col-lg-3 col-md-2"></div>
+            <div class="col-lg-6 col-md-8 login-box">
+                <div class="col-lg-12 login-key">
+                    <i class="fa fa-keyboard" aria-hidden="true"></i>
+                </div>
+                <div class="col-lg-12 login-title">
+                 Login
+                </div>
+        
+            <div class="col-lg-12 login-form">
+                <div class="col-lg-12 login-form">
             <form method="POST" autocomplete="off">
                 <fieldset class="form-group">
-                    <label for="username">Username: </label>
+                    <label for="username" class="form-control-label">Username: </label>
                     <input type="text" class="form-control"
                     name="username" placeholder="Enter username"
                     id="username" required autofocus>
                 </fieldset>
 
                 <fieldset class="form-group">
-                    <label for="password">Password: </label>
+                    <label for="password" class="form-control-label">Password: </label>
                     <input type="password" class="form-control"
                     name="password" placeholder="Enter password"
                     id="password" required>
                     or
-                    <a href="/register">Register Here</a>
+                    <a href="/register" style="color:#814cbd;; text-decoration: none;">Register Here</a>
                 </fieldset>
-
+                <div class="col-lg-12 loginbttm">
+                    <div class="col-lg-6 login-btm login-text">
+                    
+                    </div>
+                    
                 <fieldset class="form-group text-right">
-                    <input type="submit" class="btn btn-success" value="Login">
-                    <a href="/survey">
-                        <input type="button" class="btn btn-warning" value="Cancel">
-                    </a>
+                    <div class="col-lg-6 login-btm login-button">
+                    <input type="submit" class="btn btn-outline-primary" value="Login">
+                    <a href="/survey"><input type="button" class="btn btn-outline-primary" value="Cancel"></a>
+                    </div>
+                    
                 </fieldset>
 
             </form>
+                </div>
+            </div>
+        </div>
+    </div>
         </div>
     </div>
 
 </main>
 
+
+
+
+
+
+
+
 <%- include ../partials/bottom_nav.ejs %>  
 
 <%- include ../partials/footer.ejs %>
+

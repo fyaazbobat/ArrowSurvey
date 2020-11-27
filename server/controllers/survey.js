@@ -139,31 +139,38 @@ module.exports.CreateSurvey = (req, res) => {
 //display survey
 module.exports.DisplayAnswer = (req, res) => {
 
-        // get a reference to the id from the url
-        //let id = mongoose.Types.ObjectId.createFromHexString(req.params.id);
-        let id = mongoose.Types.ObjectId(req.params.id);
         
-        // find one survey by its id
-        Survey.findById(id, (err, surveyList) => {
-                // show the survey page
-                
-                res.render('survey/answer', {
-                    title: surveyList.topic,
-                    user: surveyList.user,
-                    type: surveyList.questions[0].type,
-                    surveyList: surveyList,
-                    displayName: req.user ? req.user.displayName : '',
-
-                });
-            
-        });
+        //let id = mongoose.Types.ObjectId(req.params.id);
+        try {
+            // get a reference to the id from the url
+            let id = mongoose.Types.ObjectId.createFromHexString(req.params.id);
     
-}
+            // find one survey by its id
+            Survey.findById(id, (err, surveyList) => {
+                if (err) {
+                    console.log(err);
+                    res.end(error);
+                } else {
+                    // show the survey page
+                    res.render('survey/answer', {
+                        title: surveyList.topic,
+                        user: surveyList.user,
+                        type: surveyList.questions[0].type,
+                        surveyList: surveyList,
+                        displayName: req.user ? req.user.displayName : '',
+                    });
+                }
+            });
+        } catch (err) {
+            console.log(err);
+            res.redirect('/errors/404');
+        }
+    }
 
 // Process the answer survey request
 module.exports.answerSurvey = (req, res) => {
     let numberofQuestions = req.body.numberofQuestions;
-
+    let type = req.body.type;
     let questionArray = [];
     for (let i = 0; i < numberofQuestions; ++i) {
 
@@ -175,19 +182,26 @@ module.exports.answerSurvey = (req, res) => {
         questionArray.push(question);
     }
 
-    let id = mongoose.Types.ObjectId(req.params.id);
+    let id = mongoose.Types.ObjectId.createFromHexString(req.params.id);
     let newAnswer = answerSchema({
         "surveyID":id,
         "surveyTopic": req.body.surveyTopic,
         "questions": questionArray,
-        "type": surveyList.questions[0].type
+        "type": type
     });
-            if (err) {
-                console.log(err);
-                res.end(err);
-            } else {
-                res.redirect('/survey');
-            }
+        answerSchema.create(newAnswer, (err, answer) => {
+                try {
+                    if (err) {
+                        console.log(err);
+                        res.end(err);
+                    } else {
+                        res.redirect('/survey');
+                    }
+                } catch (err) {
+                    console.log(err);
+                    res.redirect('/errors/404');
+                }
+            });
 }
 
 // Delete the survey
