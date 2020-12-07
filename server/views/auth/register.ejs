@@ -2,6 +2,10 @@
 
 <%- include ../partials/main_nav.ejs %>
 
+<link rel='stylesheet' href='/Content/login1.css' />
+<link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Balsamiq+Sans&family=Comfortaa:wght@500&family=Josefin+Sans:ital@1&family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
+
 <main class="container">
     <!-- Message Area -->
     <% if(messages.length > 0) {%>
@@ -9,57 +13,90 @@
             <%= messages %>
         </div>
     <% } %>
+<section class="Form my-4 mc-5">
+        <div class="container">
+            <div class="row no-gutter">
+                <div class="col-lg-5">
+                    <img src="../Assets/images/register.svg" alt="" class="img-fluid register-img">
+    
+                </div>
+                <div class="col-lg-7 px-2 pt-2">
+                    <!-- <img src="../Assets/images/logo.png" alt="" style="width: 150px; height: 150px;"> -->
+                    <h1 class="font-weight-bold-py-3">Arrow Surveys</h1>
+                    <h4>Register to Create Surveys</h4><br><br>
+                    <form method="POST" autocomplete="off">
+                        <div class="form-row">
+                            <div class="col-lg-7">
+                               
 
-    <div class="row">
-        <div class="offset-md-3 col-md-6">
-            <h1>Please Register</h1>
-            <form method="POST" autocomplete="off">
-                <fieldset class="form-group">
-                    <label for="username">Username: </label>
-                    <input type="text" class="form-control"
+                                <label for="username">Username </label>
+                    <input type="text" class="form-control rounded-pill form-control-lg my-3 p-4"
                     name="username" placeholder="Enter username"
                     id="username" required autofocus>
-                </fieldset>
-
-                <fieldset class="form-group">
-                    <label for="password">Password: </label>
-                    <input type="password" class="form-control"
+                                
+    
+                            </div>
+                        </div>
+    
+                        <div class="form-row">
+                            <div class="col-lg-7">
+                            <label for="password">Password </label>
+                    <input type="password" class="form-control rounded-pill form-control-lg  my-3 p-4"
                     name="password" placeholder="Enter password"
                     id="password" required>
-                </fieldset>
+                                
+                               
+                                
+                            </div>
+                             </div>
 
-                <fieldset class="form-group">
-                    <label for="email">Email: </label>
-                    <input type="email" class="form-control"
+                             <div class="form-row">
+                            <div class="col-lg-7">
+                                <label for="email">Email </label>
+                    <input type="email" class="form-control rounded-pill form-control-lg my-3 p-4"
                     name="email" placeholder="Enter Email Address"
-                    id="email" required>
-                </fieldset>
+                    id="email" required>                           
+                                
+                            </div>
+                             </div>
 
-                <fieldset class="form-group">
-                    <label for="displayName">Display Name: </label>
-                    <input type="text" class="form-control"
+                             <div class="form-row">
+                            <div class="col-lg-7">
+                                <label for="displayName">Display Name </label>
+                    <input type="text" class="form-control rounded-pill form-control-lg my-3 p-4"
                     name="displayName" placeholder="Enter Display Name"
-                    id="displayName" required>
-                </fieldset>
-
-                <fieldset class="form-group text-right">
-                    <input type="submit" class="btn btn-success" value="Register">
-                    <a href="/survey">
-                        <input type="button" class="btn btn-warning" value="Cancel">
-                    </a>
-                </fieldset>
-
-            </form>
+                    id="displayName" required>                       
+                                
+                            </div>
+                             </div>
+    
+                             <div class="form-row">
+                                <div class="col-lg-7">
+                                    
+                                    <button type="submit" class="btn1 rounded-pill form-control-lg mt-3 mb-5 " value="Register">Register</button>                                
+                                </div>
+                            </div>
+                       
+                       
+                    </form>
+                </div>
+                
+            </div>
         </div>
-    </div>
-
+    </section>
+    
 
 </main>
 
 
+    
 
 
 
-<%- include ../partials/bottom_nav.ejs %>  
 
-<%- include ../partials/footer.ejs %>
+
+<section id="services">
+     
+    
+    <%- include ../partials/footer.ejs %>
+    </section>

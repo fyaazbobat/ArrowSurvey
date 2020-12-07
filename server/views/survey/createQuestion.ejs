@@ -2,56 +2,90 @@
 
 <%- include ../partials/main_nav.ejs %>
 
+<link rel='stylesheet' href='/Content/login1.css' />
+<link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Balsamiq+Sans&family=Comfortaa:wght@500&family=Josefin+Sans:ital@1&family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
+
+
 <!-- Content for the Add page -->
-<div class="container">
-        <div class="row">
-              <div class="offset-md-3 col-md-6">
-          <h3 class="list_title"><i class="fa fa-plus" aria-hidden="true"></i> <%= title %></h3>
-            <form class="form" method="post">
-            <!--numberOfQuestion and question type-->
-            <input type="hidden" class="form-control" id="NameTextField"
+
+<section class="Form my-4 mc-5">
+        <div class="container">
+            <div class="row no-gutter">
+                
+                <div class="col-lg-7 px-2 pt-2">
+
+                    
+                    
+                    <h4 style="color:black;">Make Your Survey</h4>
+                    <form method="POST" autocomplete="off">
+                    <input type="hidden" class="form-control" id="NameTextField"
                 placeholder="Survey Topic" name="numberOfQuestion" value="<%= numberOfQuestion %>" required>
             <input type="hidden" class="form-control" id="NameTextField"
                 placeholder="Question Type" name="type" value="<%= type %>" required>
 
-              <div class="form-group">
-                <label class="label_Styling" for="NameTextField">Survey Topic</label>
+                        <div class="form-row">
+                            <div class="col-lg-7">
+                              
+                   <label class="label_Styling" for="NameTextField">Survey Topic</label>
                 <input type="text" class="form-control" id="NameTextField"
-                placeholder="Survey Topic" name="topic" value="<%= topic %>" required>
+                placeholder="Survey Topic" name="topic" value="<%= topic %>" required><br><br>
               </div>      
             <% for (let count = 1; count <= numberOfQuestion; count++) { %>
-              <div class="form-group">
+              <div class="form-group col-lg-6">
                 <label class="label_Styling" for="NameTextField">Question Topic <%= count %></label>
                 <input type="text" class="form-control" id="NameTextField"
                 placeholder="Question" name="questionTopic<%=count%>" value="" required>
               </div>
                 <% if(type == 2) { %>
-               <div class="form-group">
+               <div class="form-group col-lg-6">
                 <label class="label_Styling" for="CostTextField">Answer 1</label>
                 <input type="text" class="form-control" id="CostTextField"
                 placeholder="Answer One" name="questionAns<%=count%>1" value=""  required>
               </div>
-              <div class="form-group">
+              <div class="form-group col-lg-6">
                 <label class="label_Styling" for="CostTextField">Answer 2</label>
                 <input type="text" class="form-control" id="CostTextField"
                 placeholder="Answer Two" name="questionAns<%=count%>2" value=""  required>
               </div>
-              <div class="form-group">
+              <div class="form-group col-lg-6">
                 <label class="label_Styling" for="CostTextField">Answer 3</label>
                 <input type="text" class="form-control" id="CostTextField"
                 placeholder="Answer Three (Optional)" name="questionAns<%=count%>3" value="">
               </div>
               <% } %>
                <% } %>
-              <button type="submit" class="btn btn-primary"><i class="fa fa-check-square-o"></i> Submit</button>
-              <a href="/" class="btn btn-warning"><i class="fa fa-undo"></i> Cancel</a>
-            </form>
+                </div>
+            
+                
+                             <div class="form-row">
+                                <div class="col-lg-7">
+
+                                
+                                
+                                 
+                                    
+                                   <button type="submit" class="btn2 rounded-pill form-control-lg mt-3 mb-5" > Submit</button> 
+                                                                
+                                </div>
+                            </div>
+                      
+                       
+                    </form>
+                </div>
+                
+            </div>
         </div>
-      </div>
-</div>
+    </section>
+    
+
+    
+
+</main>
 
 
-
-<%- include ../partials/bottom_nav.ejs %>  
-
-<%- include ../partials/footer.ejs %>
+<section id="services">
+  <%- include ../partials/bottom_nav.ejs %>  
+  
+  <%- include ../partials/footer.ejs %>
+  </section>

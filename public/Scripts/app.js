@@ -22,3 +22,22 @@
     window.addEventListener("load", Start);
 
 })();
+function convert_HTML_PDF()
+{
+    var doc = new jsPDF();
+    let elementHTML = $('#content').html();
+    let specialElementHandalers = {
+        '#elementH': function(element, renderer){
+            return true;
+        }
+    };
+
+
+doc.fromHTML(elementHTML,15,15, {
+'width':170,
+'elementHandlers': specialElementHandalers
+
+});
+
+doc.save('Survey-Answer.pdf');
+}

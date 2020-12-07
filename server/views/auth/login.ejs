@@ -2,11 +2,13 @@
 
 <%- include ../partials/main_nav.ejs %>
 <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Balsamiq+Sans&family=Comfortaa:wght@500&family=Josefin+Sans:ital@1&family=Montserrat:wght@500&display=swap" rel="stylesheet">
 
 
 
-<link rel='stylesheet' href='/Content/login.css' />
+
+
+<link rel='stylesheet' href='/Content/login1.css' />
 
 <main class="container">
     <!-- Message Area -->
@@ -16,54 +18,55 @@
         </div>
     <% } %>
 
-    <div class="row">
-        <div class="col-lg-3 col-md-2"></div>
-            <div class="col-lg-6 col-md-8 login-box">
-                <div class="col-lg-12 login-key">
-                    <i class="fa fa-keyboard" aria-hidden="true"></i>
+    <section class="Form my-4 mc-5">
+        <div class="container">
+            <div class="row no-gutter">
+                <div class="col-lg-5">
+                    <img src="../Assets/images/login.svg" alt="" class="img-fluid">
+    
                 </div>
-                <div class="col-lg-12 login-title">
-                 Login
+                <div class="col-lg-7 px-2 pt-2">
+                    <!-- <img src="../Assets/images/logo.png" alt="" style="width: 150px; height: 150px;"> -->
+                    <h1 class="font-weight-bold-py-3">Arrow Surveys</h1>
+                    <h4>Login to Create Surveys</h4>
+                    <form method="POST" autocomplete="off">
+                        <div class="form-row">
+                            <div class="col-lg-7">
+                                <input type="text" class="form-control rounded-pill form-control-lg my-3 p-4"
+                                name="username" placeholder="Enter username"
+                                id="username" required autofocus>
+                                
+    
+                            </div>
+                        </div>
+    
+                        <div class="form-row">
+                            <div class="col-lg-7">
+                                <input type="password" class="form-control rounded-pill form-control-lg  my-3 p-4"
+                        name="password" placeholder="Enter password"
+                        id="password" required>
+                               
+                                
+                            </div>
+                             </div>
+    
+                             <div class="form-row">
+                                <div class="col-lg-7">
+                                    
+                                    <button type="submit" class="btn1 rounded-pill form-control-lg mt-3 mb-5" value="Login">Login</button>                                
+                                </div>
+                            </div>
+                       <p>Dont have an account? <a href="/register">Register here</a></p>
+                       
+                    </form>
                 </div>
-        
-            <div class="col-lg-12 login-form">
-                <div class="col-lg-12 login-form">
-            <form method="POST" autocomplete="off">
-                <fieldset class="form-group">
-                    <label for="username" class="form-control-label">Username: </label>
-                    <input type="text" class="form-control"
-                    name="username" placeholder="Enter username"
-                    id="username" required autofocus>
-                </fieldset>
-
-                <fieldset class="form-group">
-                    <label for="password" class="form-control-label">Password: </label>
-                    <input type="password" class="form-control"
-                    name="password" placeholder="Enter password"
-                    id="password" required>
-                    or
-                    <a href="/register" style="color:#814cbd;; text-decoration: none;">Register Here</a>
-                </fieldset>
-                <div class="col-lg-12 loginbttm">
-                    <div class="col-lg-6 login-btm login-text">
-                    
-                    </div>
-                    
-                <fieldset class="form-group text-right">
-                    <div class="col-lg-6 login-btm login-button">
-                    <input type="submit" class="btn btn-outline-primary" value="Login">
-                    <a href="/survey"><input type="button" class="btn btn-outline-primary" value="Cancel"></a>
-                    </div>
-                    
-                </fieldset>
-
-            </form>
-                </div>
+                
             </div>
         </div>
-    </div>
-        </div>
-    </div>
+    </section>
+    
+
+    
 
 </main>
 
@@ -73,8 +76,9 @@
 
 
 
-
-<%- include ../partials/bottom_nav.ejs %>  
-
-<%- include ../partials/footer.ejs %>
+<section id="services">
+   
+    
+    <%- include ../partials/footer.ejs %>
+    </section>
 

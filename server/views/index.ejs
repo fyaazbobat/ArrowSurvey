@@ -1,10 +1,16 @@
 <%- include partials/header.ejs %>
 
 <%- include partials/main_nav.ejs %>
+<head>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Balsamiq+Sans&family=Comfortaa:wght@500&family=Josefin+Sans:ital@1&family=Montserrat:wght@500&display=swap" rel="stylesheet">
+  <script src="/Content/type.js"></script>
+</head>
   
 
   <!-- Main Content -->
-  <main class="container">
+ <!-- <main class="container">
     <div class="jumbotron">
       <h1 class="display-3">Welcome to <br> <%= title %></h1>
          <% if (title == "ArrowSurveys") { %>
@@ -14,13 +20,92 @@
       </div>
         <% } %>  
     </div>
-  </main>
-  
-<%- include partials/bottom_nav.ejs %>  
+  </main>-->
 
-<%- include partials/footer.ejs %>
   
 
 
+  <section id="banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+                  <% if (title == "ArrowSurveys") { %>
+          <h1 class="display-4" style="color:white;font-family: 'Architects Daughter', cursive;">Welcome to <br> <%= title %></h1>
 
 
+            
+             
+            <h3 class="typewrite" data-period="2000" data-type='[ "Do you have Questions?", "See if you have a good plan for Business?", "Want to see other people opinions?", "Login and Create Surveys" ]'>
+              <span class="wrap"></span>
+            
+          </h3>
+            <br>
+            <br>
+            <br>
+            <br>
+          
+
+           
+       </div>
+       <div class="btnContatiner">
+           <a href="/survey/createSurvey" class="btn btn-primary" role="button">Create Surveys</a>
+           <a href="/survey" class="btn btn-primary" role="button">Go to Surveys</a>
+       
+         <% } %>
+
+         <% if (title == "About") { %>
+                   <h1 class="display-4" style="color:white;font-family: 'Architects Daughter', cursive;"> <%= title %> ArrowSurvey</h1>
+
+        <div class = "aboutDiv">
+      <p class="aboutH3">Arrow Surveys is a group that was created to design a Survey site Web App in order to meet the software requirements for the final project. The name Arrow Surveys was created based on its logo. The logo shows an arrow hitting a bulls eye, this represents our website as we aim to make the best survey site possible. Arrow Surveys consists of 5 members: Chenthuran Dharmapalan(Project Manager), Fyaaz Bobat(Lead Software Engineer), Kunwoo Yoon(Web Designer), Kunal Verma(UI programmer), Brayan Rommel Badillo Campos(Security Programmer). As a team, we have created Arrow Surveys so that users would be able to create their own surveys, answer previously made surveys, and access results to the surveys they have created only through authentication of their own account. Welcome to Arrow Surveys.</p>
+       </div>
+         <% } %>
+         
+         
+        </div>
+
+        
+         
+          
+
+        
+
+        <div class="col-md-6 text-center">
+          <img src="../Assets/images/undraw_voting_nvu7.svg" alt="" class="img-fluid">
+        </div>
+      </div>
+    </div>
+
+    <img src="../Assets/images/wave.png" alt="" class="bottom-img">
+        
+
+    
+
+  </section>
+  <section id="services">
+    <div class="container text-center">
+      <h1 class="title">Services </h1>
+      <div class="row text-center">
+        <div class="col-md-4 services">
+          <img src="../Assets/images/authen.svg" alt="" class="service-img">
+          <h4>View Results</h4>
+          <p>User can get to see the answers from other users. 
+            </p>
+
+        </div>
+        <div class="col-md-4 services">
+          <img src="../Assets/images/surveys.svg" alt="" class="service-img">
+          <h4>Make Surveys</h4>
+          <p>User can make surveys according to his/her choice with different types of survey making</p>
+
+        </div>
+        <div class="col-md-4 services">
+          <img src="../Assets/images/respond.svg" alt="" class="service-img3">
+          <h4>Answer Surveys</h4>
+          <p>Our Website allows user to give answers to the other surveys 
+           </p>
+
+        </div>
+      </div>
+    </div>
+  </section>

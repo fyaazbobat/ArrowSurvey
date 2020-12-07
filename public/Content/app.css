@@ -1,42 +1,14 @@
-/* Global *//* Color */
-:root{
-/* Color */
---color-white:#ffffff;
---color-light-white:#eeeeee;
---color-dark-white:#bdbdbd;
---color-dark-grey:#4d4d4d;
---color-grey:#616161;
---color-light-grey:#7c7979;
---color-black:#000000;
 
-/* Font */
---font-large:48px;
---font-medium:28px;
---font-regular:18px;
---font-small:16px;
---font-micro:14px;
-
-/* Font weight */
---weight-bold: 700;
---weight-semi-bold:600;
---weight-regular:400;
-
-/* size */
---size-border-radius:4px;
-/* animation duration */
---animation-duration:300ms;
-}
 *{
     box-sizing: border-box;
 }
+
 body{
-    background: url("../Assets/images/bg.png") center/cover no-repeat;
-    width: 100%;
-    height: 100%;
-    padding-bottom:60px;
+    font-family: 'Architects Daughter', cursive;
+
 }
 
-/* Nav */
+/* Nav 
 .navbar-light .navbar-nav .nav-link{
     color: var(--color-white);
 }
@@ -45,10 +17,12 @@ body{
 }
 .navbar-light .navbar-brand {
     color: var(--color-white);
-}
+}*/
 .logo{
-    width: 50px;
-    height: 50px;
+    height: 60px;
+    padding-left: 20px;
+    color: #fff !important;
+    font-weight: 600;
 }
 
 .jumbotron{
@@ -56,27 +30,188 @@ body{
     text-align: center;
     color: var(--color-white);
     margin-top: 20px;
+    
+
+}
+h1{
+    font-family: 'Architects Daughter', cursive;
+    color: white;
+}
+.btnContatiner{
+    position:absolute;
+    margin-top: 20%;
 }
 
 .btnContatiner .btn-primary{
-    color: var(--color-white);
-    background: none;
-    width: 200px;
-    height: 50px;
-    margin: 20px 10px 10px 0px;
-    border-radius: var(--size-border-radius);
-    font-size: 20px;
-    border: 2px solid white;
+    
+    box-shadow: none;
+    padding: 10px 25px;
+    border:none;
+    border-radius: 20px;
+    background-image: linear-gradient(to right,#312d2d,#da4c4c);
+    font-family: 'Architects Daughter', cursive;
+
 }
 
 .container{
     margin-top: 80px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Architects Daughter', cursive;
     box-shadow: rgba(10,10,120,0.15);
     
 }
 
   
+#nav-bar
+{
+    position: sticky;
+    top:0;
+    z-index: 10;
+}
 
+.navbar{
+    background-image: linear-gradient(to right,#D72626,#8a2727);
+}
   
-  
+.navbar-nav li{
+    padding: 0 10px;
+
+}  
+
+.navbar-nav li a{
+    color: #fff !important;
+    font-weight: 600;
+    float: right;
+    text-align: left;
+}
+
+.navbar-toggler-icon{
+
+    color: #fff;
+    font-size: 30px !important;
+    
+}
+.navbar-toggler{
+    outline: none;
+}
+
+#banner{
+
+    background-image: linear-gradient(to right,#D72626,#8a2727);
+    color: #fff;
+    padding-top: 5%;
+}
+.img-fluid{
+    float: right;
+}
+.bottom-img{
+
+    width: 100%;
+}
+
+#services{
+    padding:80px 0;
+
+}
+.service-img{
+    width: 200px;
+    margin-top: 10px;;
+}
+.service-img3{
+    width: 165px;
+    margin-top: 10px;;
+}
+
+.services{
+    padding:20px;
+}
+.services h4{
+    padding: 5px;
+    margin-top: 25px;
+    text-transform: uppercase;
+    font-family: 'Architects Daughter', cursive;
+    font-weight: 200;
+
+}
+h2{
+    color:#fff; text-decoration: none;
+}
+
+.typewrite{
+
+    color:rgb(53, 47, 47);
+    font-family: 'Balsamiq Sans', cursive;
+    
+}
+
+
+p{
+    font-family: 'Balsamiq Sans', cursive;
+}
+
+.title{
+    color: black;
+}
+
+.title::before{
+    content: '';
+    background: #D72626;
+    height: 5px;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    transform: translateY(63px);
+}
+.title::after{
+    content: '';
+    background: #D72626;
+    height: 10px;
+    width: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+    display: block;
+    transform: translateY(8px);
+}
+table {
+	box-shadow: 7px -7px #800000;
+	text-align: center;
+	border-radius: 12px;
+	margin-left: auto;
+	margin-right: auto;
+    color: #FFFFFF;
+    margin: auto;
+    vertical-align: middle;
+    
+}
+table#List {
+	box-shadow: 7px -7px #800000;
+	text-align: center;
+	border-radius: 12px;
+	margin-left: auto;
+	margin-right: auto;
+    color: #FFFFFF;
+    
+}
+  th, td {
+   width: 25%;
+   text-align: left;
+   vertical-align: top;
+   padding: 12px;
+    margin: 16px;
+}
+thead {
+    padding: 0.3em;
+    color: #fff;
+    font-size: x-large
+     
+ }
+ h3{
+ font-size: xx-large; 
+ color: #030303
+ }
+ label{
+    font-size: large;
+    color: #FFFFFF
+ }
+ 

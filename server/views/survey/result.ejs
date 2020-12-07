@@ -1,0 +1,51 @@
+<%- include ../partials/header.ejs %>
+
+<%- include ../partials/main_nav.ejs %>
+<link rel='stylesheet' href='/Content/survey.css' />
+<link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Balsamiq+Sans&family=Comfortaa:wght@500&family=Josefin+Sans:ital@1&family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+
+    <!-- Result -->
+    <div id='content'>
+    <main class="container">
+      <div class="row" style="padding-bottom:180px;" >
+        <div class="offset-md-1 col-md-11">
+        <h3>Survey Result </h3>
+        <button onclick="convert_HTML_PDF();">Download Answer</button>
+          <br>
+          <table class="table table-striped table-hover table-dark">
+            <tr>
+              <th class="text-center">Survey Topic</th>
+              <th class="text-center">Ans1</th>
+              <th class="text-center">count</th>
+              <th class="text-center">Ans2</th>
+              <th class="text-center">count</th>
+              <th class="text-center">Ans3</th>
+              <th class="text-center">count</th>
+              <th class="text-center">Total</th>
+            </tr>
+            <!-- Template Row -->
+            <!--'0': { type: 2, total: 7, topic: 'aaaa', yes: 5, no: 1, 'not sure': 1 } -->  
+            <% for (let count = 0; count < Object.keys(result).length; count++) { let keys = Object.keys(result);let singleResult = result[keys[count]];let keys_ = Object.keys(singleResult) ;%>
+            <tr>
+              <td class="text-center"><%= singleResult['topic'] %></td>
+              <td class="text-center"><%= keys_[3] %></td>
+              <td class="text-center"><%= singleResult[keys_[3]] %></td>
+              <td class="text-center"><%= keys_[4] %></td>
+              <td class="text-center"><%= singleResult[keys_[4]] %></td>
+              <td class="text-center"><%= keys_[5] %></td>
+              <td class="text-center"><%= singleResult[keys_[5]] %></td>
+              <td class="text-center"><%= singleResult['total'] %></td>
+            </tr>        
+            <% } %>
+          </table>
+        </div>
+    </div>
+    </div>
+    <div id='elementH'></div>
+  </main>
+<%- include ../partials/bottom_nav.ejs %>  
+
+<%- include ../partials/footer.ejs %>
+  

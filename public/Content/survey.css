@@ -1,0 +1,39 @@
+*{
+    padding:  0;
+    margin: 0;
+    box-sizing: border-box;
+    
+    
+}
+
+body{
+    background-image: linear-gradient(to right,#D72626,#8a2727);
+    font-family: 'Architects Daughter', cursive;
+
+}
+
+h3{
+    font-weight: bolder;
+}
+
+th{
+    font-weight: 800;
+    font-size: medium;
+}
+
+td{
+    font-size:x-large;
+    
+}
+.btn{
+    border: none;
+    outline: none;
+    height: 40px;
+    width: auto;
+    background-color:black;
+    color: white;
+    font-weight: 600;
+    border-radius: 10px;
+    font-weight: bold;
+    font-family: 'Architects Daughter', cursive;
+}

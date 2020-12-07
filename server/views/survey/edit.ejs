@@ -1,14 +1,25 @@
 <%- include ../partials/header.ejs %>
 
 <%- include ../partials/main_nav.ejs %>
+<link rel='stylesheet' href='/Content/login1.css' />
+<link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Balsamiq+Sans&family=Comfortaa:wght@500&family=Josefin+Sans:ital@1&family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
 
   <!-- Main Content -->
-  <main class="container">
-    <div class="row">
-        <div class="offset-md-1 col-md-11">
-          <form class="form" method="POST">
-            <div class="form-group">
-                    <label for="topicTextField">Survey Topic</label>
+  <section class="Form my-4 mc-5">
+        <div class="container">
+            <div class="row no-gutter">
+              
+                
+                <div class="col-lg-7 px-2 pt-2">
+
+                    <h2 class="font-weight-bold-py-3" style="color: black;">Arrow Surveys</h2>
+                    
+                    <h4>Edit Your Survey</h4>
+                    <form method="POST" autocomplete="off">
+                        <div class="form-row">
+                            <div class="col-lg-7">
+                               <label for="topicTextField">Survey Topic</label>
                     <input type="text" class="form-control"
                     id="topicTextField"
                     placeholder="Enter topic"
@@ -18,7 +29,7 @@
                 </div>
                   <% for (let i = 0; i < surveyList.questions.length; i++) { %>
                      <div class="form-group">
-                      <label for="questionTextField">Survey Questions<%=i +1%></label>
+                      <label for="questionTextField">Survey Questions <%=i +1%></label>
                       <input type="text" class="form-control"
                       id="questionTextField"
                       placeholder="Enter question"
@@ -27,9 +38,9 @@
                       required>
                   </div>      
             <% } %>
-
-     <div class="form-group">
-                    <label for="topicTextField"><%= surveyList.questions[0].questionTopic%></label>
+            <br>
+            <br>
+            <div class="form-group">
                     <input type="hidden" class="form-control"
                     id="topicTextField"
                     placeholder=""
@@ -39,7 +50,7 @@
                 </div>
             
                 <div class="form-group">
-                    <label for="topicTextField">TYPE:<%=surveyList.type %>,NUMBER OF QUESTIONS: <%=surveyList.questions.length %></label>
+                    <label for="topicTextField"></label>
                     <input type="hidden" class="form-control"
                     id="topicTextField"
                     placeholder=""
@@ -48,21 +59,38 @@
                     required>
                 </div>
 
+                                
+    
+                            </div>
+                        </div>
 
+                       
+    
+                       
+    
+                             <div class="form-row">
+                                <div class="col-lg-7" style="padding-left: 550px;">
 
-            <fieldset class="form-group text-right">
-            <button type="submit" class="btn btn-success"><i class="fa fa-check-square-o"></i> Submit</button>
-            <a href="/survey" class="btn btn-warning"><i class="fa fa-undo"></i> Cancel</a>
-            </fieldset>
-        
-         </form>
+                                
+                                
+                                 
+                                    
+                                   <button type="submit" class="btn2 rounded-pill form-control-lg mt-3 mb-5" > Submit</button> 
+                                   <a href="/survey"><p>Back</p></a>                              
+                                </div>
+                            </div>
+
+                    </form>
+                </div>
+                
+            </div>
         </div>
-    </div>
-  </main>
-  
-<%- include ../partials/bottom_nav.ejs %>  
+    </section>
+    
 
-<%- include ../partials/footer.ejs %>
+    
+
+</main>
   
 
 

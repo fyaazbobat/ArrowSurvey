@@ -1,9 +1,34 @@
-let mongoose = require('mongoose');
 
-let resultSchema = mongoose.Schema({
-  survey: { type: Schema.ObjectId, required:true, ref: 'Survey' },
-  question: {type:Schema.ObjectId,required: true},
-  choices:[ {type:Schema.ObjectId,required: true} ],
+let mongoose = require('mongoose');
+let Schema = mongoose.Schema;
+
+
+let singleResultSchema = new Schema({
+    type:String,
+    questionTopic: String,
+    ans:{ a1:String,
+        a1result:Number,
+        a2:String,
+        a2result:Number,
+        a3:String,
+        a3result:Number,
+        total:0
+    }
+},
+{
+  collection: "surveyResults"
 });
 
-module.exports=mongoose.model('Result',resultSchema);
+let resultsSchema = new Schema({
+    surveyID: String,  
+    answers: [singleResultSchema]
+},
+{
+  collection: "results"
+});
+
+module.exports = function () {
+  this.SingleResult = mongoose.model('SingleResult', singleResultSchema);
+  this.Results = mongoose.model('Results', resultsSchema);
+  return this;
+}
